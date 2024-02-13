@@ -248,13 +248,13 @@ function MoveButton() {
   napisek.style.fontSize = fontpx + "px";
   audio.play();
   var button = document.getElementById('nieButton');
-  var screenWidth = (document.documentElement.clientWidth);
-  var screenHeight = (document.documentElement.clientHeight);
+  var screenWidth = (window.innerWidth);
+  var screenHeight = (window.innerHeight);
 
   var buttonOffset = getButtonOffset(button);
 	
   var newX = Math.random() * (80) + 10;
-  var newY = Math.random() * (80) + 10;
+  var newY = Math.random() * (50) + 10;
 
   var currentPosition = {
     x: parseInt(button.style.left) || 0,
