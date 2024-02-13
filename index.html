@@ -7,35 +7,122 @@
   <title>Valentine's Proposal</title>
 </head>
 <body>
+  <audio id="myAudio" src="goatyell.mp3"></audio>
   <div class="container">
-    <h1>Emilia, czy zostaniesz moją walentynką?</h1>
+    <h1 id="napis">Emilia, czy zostaniesz moją walentynką?</h1>
+    <img id="obrazek" src="walentyne.gif" />
     <div class="button-container">
-      <button id="takButton">Tak</button>
-      <button id="nieButton" onclick="moveButton()">Nie</button>
+      <button id="takButton" onclick="Akceptacja()">Tak</button>
+      <button id="nieButton" onclick="MoveButton()">Nie</button>
     </div>
   </div>
   <script src="script.js"></script>
 </body>
 <script lang="javascript">
+  var counter = 0;
+  var lock = false;
+  var scale = 1.0;
+  var fontpx = 30;
+  document.getElementById("napis").style.fontSize = fontpx + "px";
+  ///tutaj akcept
+  function BopDoRytmu() {
+    var boppingImage = document.getElementById('obrazek');
+
+    // Increase the scale by 10% (1.1 times the current scale)
+    scale *= 2;
+
+    // Apply the new scale to the image
+    boppingImage.style.transform = `scale(${scale})`;
+
+    // Wait for a short time before starting to decrease the scale
+    setTimeout(() => {
+      // Reset transition duration for the slow second bop
+      boppingImage.style.transition = 'transform 1s ease';
+
+      // Decrease the scale back to the original size
+      scale = 1.0;
+
+      // Apply the new scale to the image
+      boppingImage.style.transform = `scale(${scale})`;
+    }, 100); // Adjust the time based on the initial transition duration
+  }
+
+  function Akceptacja(){
+    if (lock){
+      return;
+    }
+    lock = true;
+    var przycisktak = document.getElementById("takButton");
+    przycisktak.style.backgroundColor = "lime";
+    var audio = document.getElementById("myAudio");
+    audio.src = "cypis.mp3";
+    audio.loop = true;
+    audio.play();
+    var image = document.getElementById("obrazek");
+    image.src = "goatpizamki.gif";
+    var napis = document.getElementById("napis");
+    napis.innerHTML = "😎😎😎😎😎";
+    document.body.style.backgroundImage = "url(klub.jpg)";
+    document.body.style.backgroundRepeat = "no-repeat";
+    setInterval(BopDoRytmu, 450);
+  }
+  ///tutaj odmowa
 function getButtonOffset(buttonElement) {
-  // Get the client width and height
+  // wysokosc szerokosc klienta lokiec pieta
   const clientWidth = window.innerWidth;
   const clientHeight = window.innerHeight;
 
-  // Get the button's bounding box rectangle
+  // zdobadz boundingboxa
   const buttonRect = buttonElement.getBoundingClientRect();
 
-  // Calculate the absolute offsets
+  // kalkulacje
   const offsetLeft = buttonRect.left + window.pageXOffset;
   const offsetTop = buttonRect.top + window.pageYOffset;
 
-  // Return the offsets as an object
+  // offsety
   return {
     left: Math.floor(offsetLeft),
     top: Math.floor(offsetTop),
   };
 }
-function moveButton() {
+function MoveButton() {
+  if (lock){
+    return;
+  }
+  counter++;
+  if (counter >=3){
+    lock = true;
+    const audioElement = document.createElement('audio');
+    audioElement.src = 'pierun.mp3';
+    document.body.appendChild(audioElement);
+    audioElement.play();
+    document.body.style.background = 'none';
+    document.body.style.backgroundColor = "black";
+    var objectToDelete = document.getElementById('takButton');
+    objectToDelete.remove();
+     objectToDelete = document.getElementById('nieButton');
+    objectToDelete.remove();
+    objectToDelete = document.getElementById('napis');
+    objectToDelete.remove();
+     objectToDelete = document.getElementById('obrazek');
+    objectToDelete.src = 'totalnaodmowa.gif';
+    var audioend = document.getElementById("myAudio");
+    audioend.src = 'katyperry.mp3';
+    audioend.loop = true;
+    audioend.play();
+    return;
+  }
+  
+  var image = document.getElementById("obrazek");
+  image.src = "lol1.gif";
+  var audio = document.getElementById("myAudio");
+  if (!audio.paused) {
+    audio.currentTime = 0;
+} 
+  fontpx = fontpx + 4;
+  var napisek = document.getElementById("napis");
+  napisek.style.fontSize = fontpx + "px";
+  audio.play();
   var button = document.getElementById('nieButton');
   var screenWidth = (document.documentElement.clientWidth);
   var screenHeight = (document.documentElement.clientHeight);
