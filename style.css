@@ -19,7 +19,6 @@ body {
 		background-position: 0% 50%;
 	}
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -35,17 +34,44 @@ h1 {
 
 .button-container {
   display: flex;
-  gap: 10px;
+  position: relative;
+  gap: 20px;
+  transform: translateY(50px);
 }
 
 button {
   padding: 10px;
-  font-size: 16px;
   cursor: pointer;
   border-radius: 15px;
-  position: relative;
   transition: transform .3s ease-in-out;
   transition: background-color 2s ease-in-out;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
 }
 button:hover{
   transform: scale(1.2);
@@ -56,8 +82,12 @@ button:hover{
 #napis{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
+  max-height: 68px;
 }
 #obrazek{
   transition: transform 0.5s ease;
-  transform: scale(50%);
+  height: 440px;
+  width: 430px;
+  max-height: 440px;
+  object-fit: cover;
 }

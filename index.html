@@ -41,7 +41,7 @@
       boppingImage.style.transition = 'transform 1s ease';
 
       // Decrease the scale back to the original size
-      scale = .5;
+      scale = 0.9;
 
       // Apply the new scale to the image
       boppingImage.style.transform = `scale(${scale})`;
@@ -253,8 +253,8 @@ function MoveButton() {
 
   var buttonOffset = getButtonOffset(button);
 	
-  var newX = Math.random() * (screenWidth/5) + 10;
-  var newY = Math.random() * (screenHeight/5) + 10;
+  var newX = Math.random() * (80) + 10;
+  var newY = Math.random() * (80) + 10;
 
   var currentPosition = {
     x: parseInt(button.style.left) || 0,
